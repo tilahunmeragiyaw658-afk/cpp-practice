@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int x[8] = {12, 5, 18, 7, 20, 3, 15, 10};
+
+    int first = x[0];
+    int second = x[1];
+    int third = x[2];
+
+    // Arrange the first 3 numbers
+    if(first < second)
+    {
+        int temp = first;
+        first = second;
+        second = temp;
+    }
+
+    if(first < third)
+    {
+        int temp = first;
+        first = third;
+        third = temp;
+    }
+
+    if(second < third)
+    {
+        int temp = second;
+        second = third;
+        third = temp;
+    }
+
+    // Check the remaining numbers
+    for(int i = 3; i < 8; i++)
+    {
+        if(x[i] > first)
+        {
+            third = second;
+            second = first;
+            first = x[i];
+        }
+        else if(x[i] > second)
+        {
+            third = second;
+            second = x[i];
+        }
+        else if(x[i] > third)
+        {
+            third = x[i];
+        }
+    }
+
+    cout << "The third largest number is " << third << endl;
+
+    return 0;
+}
